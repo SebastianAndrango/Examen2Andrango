@@ -1,6 +1,7 @@
 package com.examen2.andrangoexamen2.model;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
@@ -19,7 +20,7 @@ public class Cliente {
     private String cedula;
     private String nombres;
     private String apellidos;
-    private LocalDateTime fechaNacimiento;
+    private Date fechaNacimiento;
     private String direccionPrincipal;
     private String telefono;
     private String email;

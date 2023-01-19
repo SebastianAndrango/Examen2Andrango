@@ -1,6 +1,7 @@
 package com.examen2.andrangoexamen2.service;
 
 import java.sql.Date;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -27,23 +28,18 @@ public class TurnoService {
         turno.setFechaHoraInicioAtencion(null);
         turno.setFechaHoraFinAtencion(null);
         turno.setCalificacion(turno.getCalificacion());
-        /*
-         * if (client.getBirthDate().after(new Date())) {
-         * throw new RuntimeException(
-         * "The date of birth cannot be greater than the current date" +
-         * client.getBirthDate());
-         * }
-         * client.setStatus("INA");
-         * client.setCreationDate(new Date());
-         * 
-         * Client clienteTemp = this.clientRepository
-         * .findByIdentificationTypeAndIdentification(client.getIdentificationType(),
-         * client.getIdentification());
-         * if (clienteTemp != null) {
-         * throw new RuntimeException("The client already exists");
-         * }
-         * this.clientRepository.save(client);
-         */
+        this.turnoRepository.save(turno);
+    }
+
+    public void calificacionTurno(String cedulaCliente, Integer calificacion) {
+        Optional<Turno> opTurno = turnoRepository.findBycedula(cedulaCliente);
+        if (opTurno.isPresent()) {
+            Turno turno = opTurno.get();
+            turno.setCalificacion(calificacion);
+            this.turnoRepository.save(turno);
+        } else {
+            throw new RuntimeException("No se encontro el turno");
+        }
     }
 
 }

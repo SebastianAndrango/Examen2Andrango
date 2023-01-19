@@ -15,7 +15,7 @@ public class Ejecutivo {
     private String id;
     private String codigoUsuario;
     private String nombreCompleto;
-    private String numeroEscritorio;
+    private Integer numeroEscritorio;
 
     @Version
     private Long version;
